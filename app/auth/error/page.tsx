@@ -5,8 +5,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { AlertCircle, Stethoscope } from "lucide-react"
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
+import { Suspense } from "react"
 
-export default function AuthErrorPage() {
+function AuthErrorContent() {
   const searchParams = useSearchParams()
   const error = searchParams.get("error")
   const errorDescription = searchParams.get("error_description")
@@ -62,5 +63,36 @@ export default function AuthErrorPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+function AuthErrorFallback() {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-background p-6">
+      <div className="w-full max-w-md">
+        <div className="flex flex-col gap-6">
+          <div className="flex flex-col items-center gap-4 text-center">
+            <div className="flex items-center gap-2">
+              <Stethoscope className="h-8 w-8 text-primary" />
+              <h1 className="text-2xl font-bold text-foreground">MedAI</h1>
+            </div>
+            <p className="text-muted-foreground">Clinical Decision Support System</p>
+          </div>
+          <Card className="border-border shadow-lg">
+            <CardContent className="p-6">
+              <div className="text-center">Loading...</div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default function AuthErrorPage() {
+  return (
+    <Suspense fallback={<AuthErrorFallback />}>
+      <AuthErrorContent />
+    </Suspense>
   )
 }
