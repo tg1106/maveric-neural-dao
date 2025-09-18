@@ -12,8 +12,11 @@ export default async function DashboardPage() {
     redirect("/auth/login")
   }
 
-  // Get doctor profile
-  const { data: doctor } = await supabase.from("doctors").select("*").eq("id", data.user.id).single()
+  const { data: doctor } = await supabase
+    .from("doctors")
+    .select("full_name, specialization, license_number, hospital_affiliation")
+    .eq("id", data.user.id)
+    .single()
 
   // Get patient statistics
   const { count: totalPatients } = await supabase

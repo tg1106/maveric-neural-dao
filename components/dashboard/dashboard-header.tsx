@@ -4,8 +4,7 @@ import { useState, useEffect } from "react"
 
 interface DashboardHeaderProps {
   doctor: {
-    first_name: string
-    last_name: string
+    full_name: string
   } | null
 }
 
@@ -20,7 +19,7 @@ export function DashboardHeader({ doctor }: DashboardHeaderProps) {
     setGreeting(randomGreeting)
   }, [])
 
-  const doctorName = doctor ? `Dr. ${doctor.first_name} ${doctor.last_name}` : "Doctor"
+  const doctorName = doctor ? `Dr. ${doctor.full_name}` : "Doctor"
 
   return (
     <div className="space-y-2">

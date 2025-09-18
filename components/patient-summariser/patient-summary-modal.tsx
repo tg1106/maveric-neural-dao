@@ -40,8 +40,7 @@ interface Patient {
 
 interface Doctor {
   id: string
-  first_name: string
-  last_name: string
+  full_name: string
   specialization: string
   license_number: string
   hospital_affiliation: string
@@ -170,7 +169,7 @@ export function PatientSummaryModal({ patient, doctor, isOpen, onClose }: Patien
                 <h3 className="font-semibold text-foreground mb-2">Healthcare Provider</h3>
                 <div className="space-y-1 text-sm">
                   <p>
-                    <strong>Doctor:</strong> Dr. {doctor.first_name} {doctor.last_name}
+                    <strong>Doctor:</strong> Dr. {doctor.full_name}
                   </p>
                   <p>
                     <strong>Specialization:</strong> {doctor.specialization || "General Practice"}
