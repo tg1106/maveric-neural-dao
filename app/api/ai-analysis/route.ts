@@ -180,7 +180,7 @@ function generateMockAnalysis(patient: any) {
 
   if (symptoms && symptoms.length > 0) {
     const relevantSymptoms = symptoms.filter((symptom) =>
-      symptom.toLowerCase().includes(chief_complaint?.toLowerCase().split(" ")[0] || "")
+      symptom.toLowerCase().includes(chief_complaint?.toLowerCase().split(" ")[0] || ""),
     )
     if (relevantSymptoms.length > 0) {
       analysis += `Associated symptoms include ${relevantSymptoms.join(", ").toLowerCase()}, which support the clinical picture. `

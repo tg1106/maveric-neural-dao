@@ -16,10 +16,6 @@ export default async function AIAnalyserPage() {
     .eq("doctor_id", data.user.id)
     .order("created_at", { ascending: false })
 
-  if (patientsError) {
-    console.error("Error fetching patients:", patientsError)
-    }
-    
   return (
     <div className="flex-1 space-y-6 p-6">
       <div className="space-y-2">
